@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ШУТИС-ийн харьяа Хөвсгөл аймаг дахь Политехник коллеж</title>
+    <!-- Google Fonts (Roboto & Montserrat) -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Google Fonts болон Ерөнхий Тохиргоо */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        :root {
+            --primary-color: #0d3b66;     /* Академик гүн цэнхэр */
+            --secondary-color: #f4d35e;   /* Тод алтан шар / Акцент өнгө */
+            --accent-hover: #e09f3e;      /* Товчны hover өнгө */
+            --dark-text: #2d3142;         /* Гарчиг болон үндсэн текст */
+            --light-bg: #f8f9fa;          /* Цэвэрхэн цагаан саарал дэвсгэр */
+            --white: #ffffff;
+            --gray: #6c757d;
+            --border-color: #e2e8f0;
+        }
+
+        body {
+            color: var(--dark-text);
+            line-height: 1.6;
+            background-color: var(--white);
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navbar */
+        .navbar {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo h2 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .logo h2 span {
+            color: var(--accent-hover);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-text);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary-color);
+        }
+
+        .nav-links .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 10px 20px;
+            border-radius: 6px;
+            transition: background 0.3s;
+        }
+
+        .nav-links .btn-primary:hover {
+            background-color: #082642;
+            color: var(--white);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            background: linear-gradient(rgba(13, 59, 102, 0.85), rgba(13, 59, 102, 0.85)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            color: var(--white);
+            text-align: center;
+        }
+
+        .hero-content {
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-main {
+            background-color: var(--secondary-color);
+            color: var(--dark-text);
+            margin-right: 15px;
+        }
+
+        .btn-main:hover {
+            background-color: var(--accent-hover);
+            color: var(--white);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--white);
+            color: var(--white);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--white);
+            color: var(--primary-color);
+        }
+
+        /* Sections General */
+        .section {
+            padding: 80px 0;
+        }
+
+        .bg-light {
+            background-color: var(--light-bg);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .section-title .line {
+            width: 60px;
+            height: 4px;
+            background-color: var(--secondary-color);
+            margin: 0 auto;
+            border-radius: 2px;
+        }
+
+        /* About Cards */
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .about-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--primary-color);
+            transition: transform 0.3s;
+        }
+
+        .about-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .about-card h3 {
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        /* Program Cards */
+        .program-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .program-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            position: relative;
+            border: 1px solid var(--border-color);
+        }
+
+        .program-card .badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: var(--secondary-color);
+            padding: 4px 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border-radius: 20px;
+        }
+
+        .program-card h3 {
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        /* Form Styles */
+        .form-wrapper {
+            max-width: 700px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            border: 1px solid var(--border-color);
+        }
+
+        .form-group-row {
+            display: flex;
+            gap: 20px;
+        }
+
+        .form-group {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            margin-bottom: 8px;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .form-group input, .form-group select {
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            outline: none;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            border-color: var(--primary-color);
+        }
+
+        .btn-submit {
+            width: 100%;
+            background-color: var(--primary-color);
+            color: var(--white);
+            font-size: 1rem;
+            padding: 14px;
+        }
+
+        .btn-submit:hover {
+            background-color: #082642;
+        }
+
+        .form-status {
+            margin-top: 15px;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .form-status.success { color: #28a745; }
+        .form-status.error { color: #dc3545; }
+
+        /* Footer */
+        .footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 60px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-info h3 {
+            margin-bottom: 15px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .footer-links h4 {
+            margin-bottom: 15px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            line-height: 2;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .form-group-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <h2>ШУТИС <span>Хөвсгөл ПК</span></h2>
+            </div>
+            <nav>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home" class="active">Нүүр</a></li>
+                    <li><a href="#about">Бидний тухай</a></li>
+                    <li><a href="#programs">Мэргэжлүүд</a></li>
+                    <li><a href="#admission" class="btn-primary">Элсэлтийн бүртгэл</a></li>
+                    <li><a href="#contact">Холбоо барих</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <h1>ШУТИС-ийн харьяа Хөвсгөл аймаг дахь Политехник коллеж</h1>
+            <p>Ирээдүйн чадварлаг мэргэжилтэнг бид бэлтгэнэ. Та бидэнтэй нэгдэж, амжилтын гараагаа эхлүүлээрэй.</p>
+            <div class="hero-buttons">
+                <a href="#admission" class="btn btn-main">Одоо бүртгүүлэх</a>
+                <a href="#programs" class="btn btn-outline">Мэргэжлүүд үзэх</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Сургуулийн тухай</h2>
+                <div class="line"></div>
+            </div>
+            <div class="about-grid">
+                <div class="about-card">
+                    <h3>Чадалтай багш нар</h3>
+                    <p>ШУТИС-ийн академик стандарт, дадлага туршлагатай багшлах бүрэлдэхүүн.</p>
+                </div>
+                <div class="about-card">
+                    <h3>Орчин үеийн лаборатори</h3>
+                    <p>Сүүлийн үеийн тоног төхөөрөмжөөр тоноглогдсон практик сургалтын орчин.</p>
+                </div>
+                <div class="about-card">
+                    <h3>Ажлын байрны баталгаа</h3>
+                    <p>Төгсөгчдийн ажлын байраар хангагдах хувь өндөр, түнш байгууллагуудтай хамтын ажиллагаатай.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section id="programs" class="section bg-light">
+        <div class="container">
+            <div class="section-title">
+                <h2>Сургалтын хөтөлбөрүүд</h2>
+                <div class="line"></div>
+            </div>
+            <div class="program-grid">
+                <div class="program-card">
+                    <div class="badge">Эрэлттэй</div>
+                    <h3>Барилгын техникч</h3>
+                    <p>Барилгын засал, угсралт болон зураг төслийн суурь мэдлэг олгох сургалт.</p>
+                </div>
+                <div class="program-card">
+                    <div class="badge">Эрэлттэй</div>
+                    <h3>Цахилгааны техникч</h3>
+                    <p>Айл өрх, үйлдвэрийн цахилгаан систем, холболтын угсралт, засвар үйлчилгээ.</p>
+                </div>
+                <div class="program-card">
+                    <div class="badge">Шинэ</div>
+                    <h3>Мэдээллийн технологи</h3>
+                    <p>Компьютер сүлжээ, програм хангамж болон вэб хөгжүүлэлтийн суурь чадвар.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admission Form Section -->
+    <section id="admission" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Элсэлтийн бүртгэл</h2>
+                <p>Та доорх формоор дамжуулан цахимаар шууд бүртгүүлэх боломжтой.</p>
+                <div class="line"></div>
+            </div>
+            <div class="form-wrapper">
+                <form id="admissionForm">
+                    <div class="form-group-row">
+                        <div class="form-group">
+                            <label for="fullname">Овог Нэр *</label>
+                            <input type="text" id="fullname" placeholder="Болдын Бат" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="register">Регистрийн дугаар *</label>
+                            <input type="text" id="register" placeholder="АА12345678" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group-row">
+                        <div class="form-group">
+                            <label for="phone">Утасны дугаар *</label>
+                            <input type="tel" id="phone" placeholder="99112233" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">И-мэйл хаяг</label>
+                            <input type="email" id="email" placeholder="example@mail.com">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="programSelect">Сонгох мэргэжил *</label>
+                        <select id="programSelect" required>
+                            <option value="">-- Мэргэжил сонгох --</option>
+                            <option value="building">Барилгын техникч</option>
+                            <option value="electrician">Цахилгааны техникч</option>
+                            <option value="it">Мэдээллийн технологи</option>
+                            <option value="auto">Авто механик</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="education">Боловсролын түвшин *</label>
+                        <select id="education" required>
+                            <option value="">-- Түвшин сонгох --</option>
+                            <option value="9th">9-р анги төгссөн</option>
+                            <option value="12th">12-р анги төгссөн</option>
+                            <option value="other">Бусад</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn btn-submit">Бүртгүүлэх хүсэлт илгээх</button>
+                    <div id="formStatus" class="form-status"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="footer">
+        <div class="container footer-grid">
+            <div class="footer-info">
+                <h3>ШУТИС-ийн харьяа Хөвсгөл аймаг дахь Политехник коллеж</h3>
+                <p>Хөвсгөл аймаг, Мөрөн сум, 8-р баг</p>
+                <p>Утас: +976 7038-XXXX</p>
+                <p>Элсэлтийн алба: info@must-khuvsgul.edu.mn</p>
+            </div>
+            <div class="footer-links">
+                <h4>Хэрэгцээт холбоос</h4>
+                <ul>
+                    <li><a href="#home">Нүүр</a></li>
+                    <li><a href="#about">Бидний тухай</a></li>
+                    <li><a href="#programs">Мэргэжлүүд</a></li>
+                    <li><a href="#admission">Бүртгэл</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 ШУТИС Хөвсгөл ПК. Бүх право хуулиар хамгаалагдсан.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // Элсэлтийн формын шалгалт болон илгээх үйлдэл
+            const admissionForm = document.getElementById('admissionForm');
+            const formStatus = document.getElementById('formStatus');
+
+            admissionForm.addEventListener('submit', (e) => {
+                e.preventDefault(); // Хуудас дахин ачаалагдахаас сэргийлнэ
+
+                // Оруулсан утгуудыг авах
+                const fullname = document.getElementById('fullname').value.trim();
+                const register = document.getElementById('register').value.trim();
+                const phone = document.getElementById('phone').value.trim();
+                const programSelect = document.getElementById('programSelect').value;
+
+                // Энгийн валидаци (баталгаажуулалт)
+                if (!fullname || !register || !phone || !programSelect) {
+                    formStatus.className = 'form-status error';
+                    formStatus.textContent = 'Шаардлагатай талбаруудыг бүрэн бөглөнө үү!';
+                    return;
+                }
+
+                // Амжилттай болсон үеийн зурвас
+                formStatus.className = 'form-status success';
+                formStatus.textContent = `Баярлалаа, ${fullname}! Таны элсэх хүсэлтийг амжилттай хүлээн авлаа. Бид тантай холбогдох болно.`;
+
+                // Формыг цэвэрлэх
+                admissionForm.reset();
+            });
+
+            // Навигацийн цэс идэвхтэй хэсэгт шилжих үед тодрох
+            const sections = document.querySelectorAll('section');
+            const navLi = document.querySelectorAll('.nav-links li a');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLi.forEach(a => {
+                    a.classList.remove('active');
+                    if (a.getAttribute('href') === `#${current}`) {
+                        a.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
